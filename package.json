@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "circleci-yarn-upgrade-pr": "./bin/circleci-yarn-upgrade-pr"
+  },
   "scripts": {
     "build": "webpack --mode development",
     "watch": "webpack --watch --mode development"
@@ -11,10 +14,12 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "is-plain-object": "^3.0.0",
     "ts-loader": "^6.0.0",
     "typescript": "^3.4.5"
   },
   "dependencies": {
+    "@octokit/rest": "^16.25.3",
     "@types/node": "^12.0.0",
     "moment": "^2.24.0"
   }

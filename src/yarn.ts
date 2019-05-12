@@ -23,11 +23,8 @@ export function compareToMarkdown(compare: json): string {
     const compareVersion: string = `v${pkg[1]}...v${pkg[2]}`
     let compareLink: string = ""
     if (pkgUrl.includes("github.com")) {
-      const compareUrl = path.join(
-        pkgUrl.replace("#readme", ""),
-        "compare",
-        compareVersion
-      )
+      const baseUrl: string = pkgUrl.replace("#readme", "")
+      const compareUrl = `${baseUrl}/compare/${compareVersion}`
       compareLink = `[\`${compareVersion}\`](${compareUrl})`
     } else {
       compareLink = `\`${compareVersion}\``

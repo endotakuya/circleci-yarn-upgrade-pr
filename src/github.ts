@@ -19,13 +19,4 @@ export class Github {
     const repos = await this.octokit.repos.list()
     console.log(repos)
   }
-
-  tempBody(compare: string): string {
-    return `**Yarn Upgraded:**
-    
-    ${compare}
-
-    Powered by [circleci-yarn-upgrade-pr](https://github.com/endotakuya/circleci-yarn-upgrade-pr)
-    `
-  }
 }

@@ -32,4 +32,11 @@ export class Pr {
   isTargetBranch(runningBranch: string): boolean {
     return this._targetBranches.includes(runningBranch)
   }
+
+  tempBody(compare: string): string {
+    return `**Yarn Upgraded:**
+${compare}
+
+Powered by [circleci-yarn-upgrade-pr](https://github.com/endotakuya/circleci-yarn-upgrade-pr)`
+  }
 }

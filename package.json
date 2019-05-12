@@ -1,7 +1,7 @@
 {
   "name": "circleci-yarn-upgrade-pr",
   "version": "1.0.0",
-  "description": "",
+  "description": "Provide continues yarn upgrade using CircleCI",
   "main": "index.js",
   "bin": {
     "circleci-yarn-upgrade-pr": "./bin/circleci-yarn-upgrade-pr"

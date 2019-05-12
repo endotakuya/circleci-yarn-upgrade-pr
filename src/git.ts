@@ -24,7 +24,7 @@ export class Git {
     await run('git add yarn.lock')
     await run("git commit -m '$ yarn upgrade'")
     await run(`git checkout -b ${this._prBranch}`)
-    // await run(`git push github-url-with-token ${this._prBranch}`)
+    await run(`git push github-url-with-token ${this._prBranch}`)
   }
 
   get prBranch(): string {

@@ -23,7 +23,7 @@ import * as yarn from "./yarn";
     return
   }
   
-  yarn.upgrade()
+  await yarn.upgrade()
   if (await pr.isUpdatedYarnLock()) {
     const prBody: string = github.tempBody(yarn.compareToMarkdown(compare))
     if (!prBody) {

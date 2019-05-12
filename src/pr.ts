@@ -26,7 +26,7 @@ export class Pr {
 
   async isUpdatedYarnLock(): Promise<boolean> {
     const changeFiles = await run("git status -sb 2> /dev/null")
-    return changeFiles.includes("README.md")
+    return changeFiles.includes("yarn.lock")
   }
 
   isTargetBranch(runningBranch: string): boolean {

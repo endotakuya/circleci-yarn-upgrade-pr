@@ -1,35 +1,22 @@
-import { exec } from "child_process"
-import * as moment from "moment"
+import { Pr } from "./pr"
+import { Git } from "./git"
+import { Github } from "./github"
 
-function run(commnad: string): Promise<string> {
-  return new Promise<string>((resolve, reject) => {
-    exec(commnad, 
-      { encoding: "utf-8" },
-      (err, stdout, stderr) => {
-        if (stdout.length > 0) {
-          console.log(stdout);
-        }
-        if (stderr.length > 0) {
-          console.error(stderr.length);
-        }
-        if (err) {
-          reject(err);
-        } else {
-          resolve(stdout);
-        }
-      })
-  })
-}
+(function() {
+  const githubAccessToken = process.env.GITHUB_ACCESS_TOKEN
 
-function createBranch() {
-  const branchPrefix: string = "yarn-upgrade-"
-  const branch: string = branchPrefix + moment().format('YYYYMMDDHHmmss')
-  console.log(branch)
-}
+  const pr = new Pr()
+  if (!pr.isTargetBranch("master")) {
+    return
+  }
 
-async function main() {
-  await run('pwd')
-  createBranch()
-}
+  const github = new Github(githubAccessToken)
+  // github.test()
 
-main()
+  const git = new Git(
+    "endotakuya",
+    "circleci-yarn-upgrade-pr",
+    "endo.takuya.0701@gmail.com"
+  )
+  git.init(github.accessToken)
+}())

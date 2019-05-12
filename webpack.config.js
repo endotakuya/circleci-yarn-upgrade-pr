@@ -11,6 +11,9 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions:['.ts','.js']
+    extensions:['.ts', '.js'],
+    alias: {
+      'is-plain-object$': 'is-plain-object/index.cjs.js'
+    }
   }
 }

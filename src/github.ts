@@ -1,7 +1,7 @@
 import * as Octokit from '@octokit/rest'
 
 export class Github {
-  octokit: Octokit
+  public octokit: Octokit
   private _accessToken: string
 
   constructor(token: string) {
@@ -15,7 +15,7 @@ export class Github {
     return this._accessToken
   }
 
-  async test() {
+  public async test() {
     const repos = await this.octokit.repos.list()
     console.log(repos)
   }

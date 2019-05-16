@@ -1,10 +1,10 @@
-import * as moment from "moment"
-import run from "./run"
+import * as moment from 'moment'
+import run from './run'
 
 export class Git {
-  username: string
-  reponame: string
-  email: string
+  public username: string
+  public reponame: string
+  public email: string
   private _prBranch: string
 
   constructor(username: string, reponame: string, email: string) {
@@ -13,14 +13,14 @@ export class Git {
     this.email = email
   }
 
-  async init(token: string) {
+  public async init(token: string) {
     await run(`git remote add github-url-with-token ${this.remote(token)}`)
     await run(`git config user.name ${this.username}`)
     await run(`git config user.email ${this.email}`)
     this._prBranch = this.branch()
   }
 
-  async push() {
+  public async push() {
     await run('git add yarn.lock')
     await run("git commit -m '$ yarn upgrade'")
     await run(`git checkout -b ${this._prBranch}`)
@@ -32,7 +32,7 @@ export class Git {
   }
 
   private branch(): string {
-    const prefix: string = "yarn-upgrade-"
+    const prefix: string = 'yarn-upgrade-'
     return prefix + moment().format('YYYYMMDDHHmmss')
   }
 

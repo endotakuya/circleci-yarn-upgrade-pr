@@ -1,9 +1,8 @@
-import { Pr } from "./pr"
-import { Git } from "./git"
-import { Github } from "./github"
-import * as yarn from "./yarn";
-
-(async function() {
+import { Git } from './git'
+import { Github } from './github'
+import { Pr } from './pr'
+import * as yarn from './yarn'
+;(async function() {
   const username = process.env.CIRCLE_PROJECT_USERNAME
   const reponame = process.env.CIRCLE_PROJECT_REPONAME
   const email = process.env.GITHUB_USER_EMAIL
@@ -22,7 +21,7 @@ import * as yarn from "./yarn";
   if (!compare) {
     return
   }
-  
+
   await yarn.upgrade()
   if (await pr.isUpdatedYarnLock()) {
     const prBody: string = pr.tempBody(yarn.compareToMarkdown(compare))
@@ -34,12 +33,11 @@ import * as yarn from "./yarn";
     const prParams = {
       owner: username,
       repo: reponame,
-      title: "",
+      title: '',
       head: git.prBranch,
       base: runningBranch,
       body: prBody
     }
     await pr.create(github, prParams)
   }
-  
-}())
+})()

@@ -2,6 +2,8 @@ import { Git } from './git'
 import { Github } from './github'
 import { Pr } from './pr'
 import * as yarn from './yarn'
+
+// tslint:disable-next-line: no-floating-promises
 ;(async function() {
   const username = process.env.CIRCLE_PROJECT_USERNAME
   const reponame = process.env.CIRCLE_PROJECT_REPONAME

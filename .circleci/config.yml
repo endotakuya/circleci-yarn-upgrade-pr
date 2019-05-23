@@ -1,0 +1,28 @@
+version: 2.1
+
+executors:
+  node_stretch:
+    working_directory: ~/circleci-yarn-upgrade-pr
+    docker:
+      - image: circleci/node:10.15.3-stretch
+
+jobs:
+  yarn-upgrade:
+    executor: node_stretch
+    steps:
+    - checkout
+    - run:
+        name: Install circleci-yarn-upgrade-pr
+        command: |
+          yarn global add circleci-yarn-upgrade-pr
+    - run:
+        name: Continuous yarn upgrade
+        command: |
+          export PATH="$PATH:`yarn global bin`"
+          circleci-yarn-upgrade-pr
+
+workflows:
+  version: 2
+  run-circleci:
+    jobs:
+      - yarn-upgrade

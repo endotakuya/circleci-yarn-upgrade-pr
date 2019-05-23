@@ -12,11 +12,7 @@ interface PrParameters {
 }
 
 export class Pr {
-  private _targetBranches: string[]
-
-  constructor(targetBranches = ['master']) {
-    this._targetBranches = targetBranches
-  }
+  constructor(private _targetBranches: string[]) {}
 
   public async create(github: Github, params: PrParameters) {
     const titlePrefix = 'yarn upgrade at '

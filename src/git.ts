@@ -4,19 +4,16 @@ import run from './run'
 export class Git {
   public username: string
   public reponame: string
-  public email: string
   private _prBranch: string
 
-  constructor(username: string, reponame: string, email: string) {
+  constructor(username: string, reponame: string) {
     this.username = username
     this.reponame = reponame
-    this.email = email
   }
 
   public async init(token: string) {
     await run(`git remote add github-url-with-token ${this.remote(token)}`)
     await run(`git config user.name ${this.username}`)
-    await run(`git config user.email ${this.email}`)
     this._prBranch = this.branch()
   }
 

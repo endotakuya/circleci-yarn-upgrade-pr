@@ -19,7 +19,7 @@ jobs:
         name: Continuous yarn upgrade
         command: |
           export PATH="$PATH:`yarn global bin`"
-          circleci-yarn-upgrade-pr
+          circleci-yarn-upgrade-pr -b circleci
 
 workflows:
   version: 2

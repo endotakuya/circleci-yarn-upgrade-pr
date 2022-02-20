@@ -15,7 +15,6 @@
   "license": "MIT",
   "devDependencies": {
     "commander": "^2.20.0",
-    "is-plain-object": "^3.0.0",
     "prettier": "^1.17.1",
     "ts-loader": "^6.0.0",
     "tslint": "^5.16.0",

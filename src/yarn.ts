@@ -1,5 +1,3 @@
-import { json } from '@octokit/rest'
-import * as path from 'path'
 import run from './run'
 
 export async function upgrade() {
@@ -13,7 +11,7 @@ export async function outdated(): Promise<any> {
   return JSON.parse(rawData)
 }
 
-export function compareToMarkdown(compare: json): string {
+export function compareToMarkdown(compare: any): string {
   let compareBody: string = ''
   compare.data.body.forEach(pkg => {
     if (pkg[1] === pkg[2]) {
